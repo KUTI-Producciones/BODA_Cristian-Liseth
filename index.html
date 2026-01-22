@@ -3,175 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nuestra Boda</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+<title>Galería</title>
 
 <style>
 body{
     margin:0;
-    font-family:'Playfair Display', serif;
-    color:white;
-    text-align:center;
-    background:url('fondo_boda2.jpg') center/cover fixed;
-    min-height:100vh;
-}
-@media(min-width:769px){
-    body::before{
-        content:"";
-        position:fixed;
-        inset:0;
-        backdrop-filter:blur(10px);
-        background:rgba(0,0,0,.35);
-        z-index:-1;
-    }
-}
-@media(max-width:768px){
-    body{
-        background:url('fondo_boda1.jpg') center/cover fixed;
-    }
-}
-
-/* TEXTOS */
-h1{
-    font-family:'Great Vibes', cursive;
-    font-size:56px;
-    margin-top:40px;
-}
-.fecha{font-size:18px;}
-.nombres{
-    display:flex;
-    justify-content:center;
-    gap:80px;
-    margin:25px 0;
-    font-size:26px;
-}
-.nombres span{
-    display:block;
-    font-size:20px;
-}
-.frase{
-    font-family:'Great Vibes', cursive;
-    font-size:40px;
-    margin:30px 0;
-}
-
-/* MUSICA */
-.musica button{
-    font-size:34px;
-    background:none;
-    border:none;
-    color:white;
-    cursor:pointer;
-}
-.musica p{
-    font-family:'Great Vibes', cursive;
-    font-size:22px;
+    background:#111;
+    font-family:Arial, sans-serif;
 }
 
 /* GALERIA */
 .galeria{
     max-width:1200px;
     margin:auto;
-    padding:20px;
+    padding:16px;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:22px;
-}
-@media(max-width:768px){
-    .galeria{grid-template-columns:repeat(2,1fr);}
-    .foto-principal{grid-column:1/-1;}
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:16px;
 }
 
 /* FOTO */
 .foto{
     position:relative;
-    border-radius:18px;
     overflow:hidden;
+    border-radius:16px;
 }
 .foto img{
     width:100%;
+    height:100%;
+    object-fit:cover;
     display:block;
 }
 
-/* DESCARGA */
-.descargar{
-    position:absolute;
-    top:8px;
-    left:8px;
-    background:rgba(0,0,0,.6);
-    padding:7px;
-    border-radius:50%;
-    z-index:6;
+/* PRIMERA FOTO GRANDE */
+.foto.principal{
+    grid-column:span 2;
 }
 
-/* MARCOS */
-.esquina{
-    position:absolute;
-    width:22%;
-    height:22%;
-    z-index:5;
-    pointer-events:none;
+/* CELULAR */
+@media(max-width:768px){
+    .galeria{
+        grid-template-columns:repeat(2,1fr);
+    }
+    .foto.principal{
+        grid-column:1 / -1;
+    }
 }
-.tl{top:0;left:0;}
-.tr{top:0;right:0;transform:scaleX(-1);}
-.bl{bottom:0;left:0;transform:scaleY(-1);}
-.br{bottom:0;right:0;transform:scale(-1);}
-.esquina svg{width:100%;height:100%;}
-
-/* FOOTER */
-footer{margin:60px 0 40px;}
-footer h2{font-size:26px;margin-bottom:15px;}
-.redes{
-    display:flex;
-    justify-content:center;
-    gap:18px;
-    align-items:center;
-}
-.redes a img{
-    width:28px;
-    height:28px;
-    object-fit:contain;
-}
-.redes a{color:white;font-size:28px;}
 </style>
 </head>
 
 <body>
 
-<audio id="audio" src="musica_boda.mp3"></audio>
-<div class="musica">
-<button onclick="document.getElementById('audio').play()">
-<i class="fa-solid fa-play"></i>
-</button>
-<p>¡ESCUCHAME!</p>
-</div>
+<div class="galeria" id="galeria"></div>
 
-<h1>Nuestra Boda</h1>
-<div class="fecha">18/01/2025</div>
+<script>
+const galeria = document.getElementById("galeria");
 
-<div class="nombres">
-<div>Cristian<span>Paucar</span></div>
-<div>Liseth<span>Pilamunga</span></div>
-</div>
+for(let i=1; i<=65; i++){
+    const div = document.createElement("div");
+    div.className = "foto" + (i === 1 ? " principal" : "");
+    div.innerHTML = `<img src="Kuti_PRO_${i}.jpg" alt="Foto ${i}">`;
+    galeria.appendChild(div);
+}
+</script>
 
-<div class="frase">dos vidas, un solo amor</div>
-
-<div class="galeria">
-
-<!-- FOTO 1 -->
-<div class="foto foto-principal">
-<a class="descargar" href="Kuti_PRO_1.jpg" download><i class="fa fa-download"></i></a>
-<div class="esquina tl"><svg viewBox="0 0 100 100"><path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/><circle cx="28" cy="28" r="6" fill="#fff"/></svg></div>
-<div class="esquina tr"><svg viewBox="0 0 100 100"><path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/><circle cx="28" cy="28" r="6" fill="#fff"/></svg></div>
-<div class="esquina bl"><svg viewBox="0 0 100 100"><path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/><circle cx="28" cy="28" r="6" fill="#fff"/></svg></div>
-<div class="esquina br"><svg viewBox="0 0 100 100"><path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/><circle cx="28" cy="28" r="6" fill="#fff"/></svg></div>
-<img src="Kuti_PRO_1.jpg">
-</div>
-
-<!-- FOTOS 2 A 65 -->
-<!-- SOLO CAMBIA EL NÚMERO -->
-<!-- (YA ES INDIVIDUAL, UNA POR UNA) -->
-
-<!-- PEGA ESTO HASTA 65 -->
+</body>
+</html>
