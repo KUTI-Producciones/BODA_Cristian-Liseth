@@ -5,255 +5,234 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nuestra Boda</title>
 
-<!-- Fuentes elegantes -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<!-- ICONOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- Iconos -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- FUENTES -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-/* ===== FONDOS SEGÚN DISPOSITIVO ===== */
+/* ================= FONDO RESPONSIVE ================= */
 body{
     margin:0;
     font-family:'Playfair Display', serif;
-    color:white;
+    text-align:center;
     background:url('fondo_boda2.jpg') no-repeat center center fixed;
     background-size:cover;
-    text-align:center;
+    color:#fff;
 }
-
-@media(max-width:900px){
+@media(max-width:768px){
     body{
         background:url('fondo_boda1.jpg') no-repeat center center fixed;
         background-size:cover;
     }
 }
 
-.overlay{
-    background:rgba(0,0,0,0.55);
-    min-height:100vh;
-    padding:40px 20px;
-}
-
-/* ===== TÍTULOS ===== */
+/* ================= TITULOS ================= */
 .titulo{
-    font-size:2.6rem;
-    letter-spacing:3px;
+    margin-top:40px;
 }
-
+.titulo h1{
+    font-family:'Great Vibes', cursive;
+    font-size:60px;
+    margin:0;
+}
 .fecha{
-    margin-top:10px;
-    font-size:1.2rem;
+    font-size:18px;
+    margin-top:5px;
 }
-
-.frase{
-    margin:30px 0;
-    font-size:1.8rem;
-    letter-spacing:2px;
-}
-
-/* ===== NOMBRES ===== */
 .nombres{
     display:flex;
     justify-content:center;
     gap:80px;
-    margin:40px 0;
+    margin-top:30px;
 }
-
-.persona .nombre{
-    font-family:'Great Vibes', cursive;
-    font-size:3.2rem;
-}
-
-.persona .apellido{
-    font-size:1.3rem;
-    letter-spacing:2px;
-}
-
-@media(max-width:700px){
-    .nombres{
-        flex-direction:column;
-        gap:25px;
-    }
-}
-
-/* ===== FOTO PRINCIPAL ===== */
-.foto-principal{
-    max-width:900px;
-    margin:40px auto;
-    position:relative;
-    padding:14px;
-    border-radius:25px;
-    background:linear-gradient(135deg,#f5d27a,#b8860b,#f5d27a);
-    box-shadow:0 20px 45px rgba(0,0,0,0.8);
-}
-
-.foto-principal img{
-    width:100%;
-    border-radius:18px;
-}
-
-/* ===== GALERÍA ===== */
-.galeria{
-    margin-top:60px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:30px;
-    max-width:1300px;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-.foto{
-    position:relative;
-    padding:10px;
-    border-radius:22px;
-    background:linear-gradient(135deg,#f5d27a,#b8860b,#f5d27a);
-    box-shadow:0 15px 35px rgba(0,0,0,0.7);
-}
-
-.foto img{
-    width:100%;
-    border-radius:15px;
-}
-
-/* ===== DESCARGA ===== */
-.descargar{
-    position:absolute;
-    top:14px;
-    left:14px;
-    background:rgba(0,0,0,0.65);
-    padding:8px;
-    border-radius:50%;
-    color:white;
-    text-decoration:none;
-    font-size:16px;
-}
-
-/* ===== MÚSICA ===== */
-.music-container{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    text-align:center;
-    z-index:1000;
-}
-
-.music-btn{
-    background:rgba(0,0,0,0.75);
-    border:none;
-    color:white;
+.nombres div{
     font-size:26px;
-    padding:16px 18px;
-    border-radius:50%;
+}
+.nombres span{
+    display:block;
+    font-size:20px;
+}
+.frase{
+    margin:35px 0;
+    font-family:'Great Vibes', cursive;
+    font-size:40px;
+}
+
+/* ================= MUSICA ================= */
+.musica{
+    margin:30px 0;
+}
+.musica button{
+    font-size:40px;
+    background:none;
+    border:none;
+    color:#fff;
     cursor:pointer;
 }
-
-.music-text{
-    font-family:'Playfair Display', serif;
-    font-size:0.8rem;
-    margin-top:6px;
+.musica p{
+    font-family:'Great Vibes', cursive;
+    font-size:22px;
+    margin:5px 0;
 }
 
-/* ===== FOOTER ===== */
+/* ================= GALERIA ================= */
+.galeria{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    padding:20px;
+}
+.foto-principal{
+    grid-column:1/-1;
+    max-width:700px;
+    margin:auto;
+}
+
+/* ================= MARCO COLONIAL PEGADO ================= */
+.marco-colonial{
+    position:relative;
+    border:6px solid #6b8e23;
+    border-radius:22px;
+    box-shadow:
+        inset 0 0 0 2px #a6b96f,
+        inset 0 0 8px rgba(255,255,255,0.4),
+        0 18px 40px rgba(0,0,0,0.8);
+}
+.marco-colonial::after{
+    content:"";
+    position:absolute;
+    inset:4px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.35);
+    pointer-events:none;
+}
+.marco-colonial img{
+    width:100%;
+    display:block;
+    border-radius:16px;
+}
+
+/* ================= DESCARGA ================= */
+.descargar{
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:rgba(0,0,0,0.6);
+    padding:8px;
+    border-radius:50%;
+    color:#fff;
+    z-index:2;
+}
+
+/* ================= FOOTER ================= */
 footer{
-    margin-top:80px;
+    margin:60px 0 40px;
 }
-
 footer h2{
-    letter-spacing:3px;
+    font-size:26px;
+    margin-bottom:15px;
 }
-
 .redes{
     display:flex;
     justify-content:center;
-    gap:22px;
-    margin-top:15px;
+    gap:25px;
 }
-
 .redes a{
-    color:white;
-    font-size:1.8rem;
+    font-size:30px;
+    color:#fff;
+}
+.descargar-todo{
+    margin:40px 0;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ===== AUDIO ===== -->
-<audio id="musica" autoplay loop>
-    <source src="musica_boda.mp3" type="audio/mpeg">
-</audio>
-
-<div class="music-container">
-    <button class="music-btn" onclick="toggleMusic()">
+<!-- MUSICA -->
+<audio id="audio" src="musica_boda.mp3"></audio>
+<div class="musica">
+    <button onclick="document.getElementById('audio').play()">
         <i class="fa-solid fa-play"></i>
     </button>
-    <div class="music-text">¡ESCUCHAME!</div>
+    <p>¡ESCUCHAME!</p>
 </div>
 
-<div class="overlay">
+<!-- TITULOS -->
+<div class="titulo">
+    <h1>Nuestra Boda</h1>
+    <div class="fecha">18/01/2025</div>
 
-<div class="titulo">Nuestra Boda</div>
-<div class="fecha">18 / 01 / 2025</div>
-
-<div class="nombres">
-    <div class="persona">
-        <div class="nombre">Cristian</div>
-        <div class="apellido">Paucar</div>
+    <div class="nombres">
+        <div>
+            Cristian
+            <span>Paucar</span>
+        </div>
+        <div>
+            Liseth
+            <span>Pilamunga</span>
+        </div>
     </div>
-    <div class="persona">
-        <div class="nombre">Liseth</div>
-        <div class="apellido">Pilamunga</div>
-    </div>
+
+    <div class="frase">dos vidas, un solo amor</div>
 </div>
 
-<div class="frase">DOS VIDAS, UN SOLO AMOR</div>
+<!-- GALERIA -->
+<div class="galeria">
 
-<!-- FOTO PRINCIPAL -->
-<div class="foto-principal">
-    <a class="descargar" href="Kuti_PRO_1.jpg" download>
-        <i class="fa-solid fa-download"></i>
-    </a>
-    <img src="Kuti_PRO_1.jpg">
-</div>
-
-<!-- GALERÍA -->
-<div class="galeria" id="galeria"></div>
-
-<footer>
-<h2>KUTI PRODUCCIONES</h2>
-<div class="redes">
-    <a href="https://www.instagram.com/kuti.producciones?igsh=MTMwNHZvODg0c29rcA==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://www.facebook.com/KUTI.producciones" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-    <a href="https://www.tiktok.com/@kutiproducciones?_r=1&_t=ZS-93H8ApU0axd" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-</div>
-</footer>
-
-</div>
-
-<script>
-/* GALERÍA 2 → 65 */
-const galeria=document.getElementById("galeria");
-for(let i=2;i<=65;i++){
-    galeria.innerHTML+=`
-    <div class="foto">
-        <a class="descargar" href="Kuti_PRO_${i}.jpg" download>
+    <!-- FOTO PRINCIPAL -->
+    <div class="foto-principal marco-colonial">
+        <a class="descargar" href="Kuti_PRO_1.jpg" download>
             <i class="fa-solid fa-download"></i>
         </a>
-        <img src="Kuti_PRO_${i}.jpg">
-    </div>`;
-}
+        <img src="Kuti_PRO_1.jpg">
+    </div>
 
-/* MÚSICA */
-const musica=document.getElementById("musica");
-musica.volume=0.5;
-let play=true;
-function toggleMusic(){
-    play?musica.pause():musica.play();
-    play=!play;
-}
-</script>
+    <!-- FOTOS 2 A 65 -->
+    <script>
+        for(let i=2;i<=65;i++){
+            document.write(`
+            <div class="marco-colonial">
+                <a class="descargar" href="Kuti_PRO_${i}.jpg" download>
+                    <i class="fa-solid fa-download"></i>
+                </a>
+                <img src="Kuti_PRO_${i}.jpg">
+            </div>
+            `);
+        }
+    </script>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="descargar-todo">
+        <a href="Kuti_FOTOS.zip" download style="color:white;">
+            Descargar todas las fotos
+        </a>
+    </div>
+
+    <h2>KUTI PRODUCCIONES</h2>
+
+    <div class="redes">
+        <a href="https://www.instagram.com/kuti.producciones" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/KUTI.producciones" target="_blank">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.tiktok.com/@kutiproducciones" target="_blank">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+
+</footer>
 
 </body>
 </html>
+
