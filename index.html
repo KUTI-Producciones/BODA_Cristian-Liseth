@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 
 <style>
-/* ===== BASE ===== */
 body{
     margin:0;
     font-family:'Playfair Display', serif;
@@ -17,29 +16,27 @@ body{
     text-align:center;
     background:url('fondo_boda2.jpg') center/cover fixed;
     min-height:100vh;
-    position:relative;
 }
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    backdrop-filter:blur(10px);
-    background:rgba(0,0,0,.3);
-    z-index:-1;
+@media(min-width:769px){
+    body::before{
+        content:"";
+        position:fixed;
+        inset:0;
+        backdrop-filter:blur(10px);
+        background:rgba(0,0,0,.35);
+        z-index:-1;
+    }
 }
-
-/* ===== MOVIL ===== */
 @media(max-width:768px){
     body{
         background:url('fondo_boda1.jpg') center/cover fixed;
     }
-    body::before{display:none;}
 }
 
-/* ===== TEXTOS ===== */
+/* TEXTOS */
 h1{
     font-family:'Great Vibes', cursive;
-    font-size:58px;
+    font-size:56px;
     margin-top:40px;
 }
 .fecha{font-size:18px;}
@@ -47,19 +44,19 @@ h1{
     display:flex;
     justify-content:center;
     gap:80px;
-    margin-top:25px;
+    margin:25px 0;
     font-size:26px;
 }
 .nombres span{display:block;font-size:20px;}
 .frase{
     font-family:'Great Vibes', cursive;
     font-size:40px;
-    margin:35px 0;
+    margin:30px 0;
 }
 
-/* ===== MUSICA ===== */
+/* MUSICA */
 .musica button{
-    font-size:36px;
+    font-size:34px;
     background:none;
     border:none;
     color:white;
@@ -69,21 +66,21 @@ h1{
     font-size:22px;
 }
 
-/* ===== GALERIA ===== */
+/* GALERIA */
 .galeria{
     max-width:1200px;
     margin:auto;
+    padding:20px;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:24px;
-    padding:20px;
+    gap:22px;
 }
 @media(max-width:768px){
     .galeria{grid-template-columns:repeat(2,1fr);}
     .foto-principal{grid-column:1/-1;}
 }
 
-/* ===== FOTO ===== */
+/* FOTO */
 .foto{
     position:relative;
     border-radius:18px;
@@ -92,11 +89,9 @@ h1{
 .foto img{
     width:100%;
     display:block;
-    position:relative;
-    z-index:1;
 }
 
-/* ===== DESCARGA ===== */
+/* DESCARGA */
 .descargar{
     position:absolute;
     top:8px;
@@ -107,35 +102,36 @@ h1{
     z-index:5;
 }
 
-/* ===== MARCO SOBRE LA FOTO ===== */
+/* MARCOS EN ESQUINAS */
 .esquina{
     position:absolute;
     width:22%;
     height:22%;
-    z-index:4; /* SOBRE LA FOTO */
+    z-index:4;
     pointer-events:none;
 }
 .tl{top:0;left:0;}
 .tr{top:0;right:0;transform:scaleX(-1);}
 .bl{bottom:0;left:0;transform:scaleY(-1);}
 .br{bottom:0;right:0;transform:scale(-1);}
+
 .esquina svg{
     width:100%;
     height:100%;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{margin:60px 0 40px;}
 footer h2{font-size:26px;margin-bottom:15px;}
 .redes{
     display:flex;
     justify-content:center;
-    gap:20px;
+    gap:18px;
     align-items:center;
 }
-.redes a{color:white;font-size:30px;}
+.redes a{color:white;font-size:28px;}
 
-/* ===== LOGO LIGHTROOM ===== */
+/* LIGHTROOM */
 .lr-logo{
     width:36px;
     height:36px;
@@ -174,41 +170,17 @@ footer h2{font-size:26px;margin-bottom:15px;}
 
 <div class="galeria">
 
-<!-- MARCO SVG -->
-<template id="marco">
-<svg viewBox="0 0 100 100">
-<path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/>
-<circle cx="28" cy="28" r="6" fill="#ffffff"/>
-</svg>
-</template>
-
-<!-- FOTO 1 -->
+<!-- FOTO PRINCIPAL -->
 <div class="foto foto-principal">
 <a class="descargar" href="Kuti_PRO_1.jpg" download><i class="fa fa-download"></i></a>
-<div class="esquina tl"></div>
-<div class="esquina tr"></div>
-<div class="esquina bl"></div>
-<div class="esquina br"></div>
+<div class="esquina tl"><svg viewBox="0 0 100 100"><path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/><circle cx="28" cy="28" r="6" fill="#fff"/></svg></div>
+<div class="esquina tr"><svg viewBox="0 0 100 100"><path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/><circle cx="28" cy="28" r="6" fill="#fff"/></svg></div>
+<div class="esquina bl"><svg viewBox="0 0 100 100"><path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/><circle cx="28" cy="28" r="6" fill="#fff"/></svg></div>
+<div class="esquina br"><svg viewBox="0 0 100 100"><path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/><circle cx="28" cy="28" r="6" fill="#fff"/></svg></div>
 <img src="Kuti_PRO_1.jpg">
 </div>
 
-<script>
-const marco = document.getElementById('marco').innerHTML;
-document.querySelectorAll('.esquina').forEach(e=>e.innerHTML=marco);
-
-for(let i=2;i<=65;i++){
-document.write(`
-<div class="foto">
-<a class="descargar" href="Kuti_PRO_${i}.jpg" download><i class="fa fa-download"></i></a>
-<div class="esquina tl">${marco}</div>
-<div class="esquina tr">${marco}</div>
-<div class="esquina bl">${marco}</div>
-<div class="esquina br">${marco}</div>
-<img src="Kuti_PRO_${i}.jpg">
-</div>
-`);
-}
-</script>
+<!-- COPIA ESTE BLOQUE PARA Kuti_PRO_2.jpg HASTA Kuti_PRO_65.jpg -->
 
 </div>
 
@@ -218,12 +190,9 @@ document.write(`
 <a href="https://www.instagram.com/kuti.producciones" target="_blank"><i class="fab fa-instagram"></i></a>
 <a href="https://www.facebook.com/KUTI.producciones" target="_blank"><i class="fab fa-facebook"></i></a>
 <a href="https://www.tiktok.com/@kutiproducciones" target="_blank"><i class="fab fa-tiktok"></i></a>
-<a href="https://adobe.ly/466cWfv" target="_blank">
-<div class="lr-logo">LR</div>
-</a>
+<a href="https://adobe.ly/466cWfv" target="_blank"><div class="lr-logo">LR</div></a>
 </div>
 </footer>
 
 </body>
 </html>
-
