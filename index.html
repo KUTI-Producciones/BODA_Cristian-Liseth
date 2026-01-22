@@ -5,26 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nuestra Boda</title>
 
-<!-- ICONOS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- FUENTES -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 
 <style>
-/* ===== FONDO ===== */
+/* ===== ESTILO BASE ===== */
 body{
     margin:0;
-    text-align:center;
     font-family:'Playfair Display', serif;
+    text-align:center;
+    color:white;
+    min-height:100vh;
+    position:relative;
     background:url('fondo_boda2.jpg') no-repeat center center fixed;
     background-size:cover;
-    color:white;
 }
-@media(max-width:768px){
+
+/* ===== DESENFOQUE SOLO COMPUTADORA ===== */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    background:rgba(0,0,0,0.25);
+    z-index:-1;
+}
+
+/* ===== MOVIL / TABLET (SIN DESENFOQUE) ===== */
+@media (max-width: 768px){
     body{
         background:url('fondo_boda1.jpg') no-repeat center center fixed;
         background-size:cover;
+    }
+    body::before{
+        display:none; /* elimina blur */
     }
 }
 
@@ -34,9 +49,7 @@ h1{
     font-size:60px;
     margin-top:40px;
 }
-.fecha{
-    font-size:18px;
-}
+.fecha{font-size:18px;}
 .nombres{
     display:flex;
     justify-content:center;
@@ -68,7 +81,6 @@ h1{
 .musica p{
     font-family:'Great Vibes', cursive;
     font-size:22px;
-    margin:5px 0;
 }
 
 /* ===== GALERIA ===== */
@@ -93,21 +105,20 @@ h1{
 .foto img{
     width:100%;
     display:block;
-    border-radius:14px;
+    border-radius:16px;
 }
 
-/* ===== ESQUINAS FLORALES ===== */
+/* ===== ESQUINAS FLORALES PROPORCIONALES ===== */
 .esquina{
     position:absolute;
-    width:60px;
-    height:60px;
+    width:18%;
+    height:18%;
     pointer-events:none;
 }
-.tl{top:-4px;left:-4px;}
-.tr{top:-4px;right:-4px;transform:scaleX(-1);}
-.bl{bottom:-4px;left:-4px;transform:scaleY(-1);}
-.br{bottom:-4px;right:-4px;transform:scale(-1);}
-
+.tl{top:0;left:0;}
+.tr{top:0;right:0;transform:scaleX(-1);}
+.bl{bottom:0;left:0;transform:scaleY(-1);}
+.br{bottom:0;right:0;transform:scale(-1);}
 .esquina svg{
     width:100%;
     height:100%;
@@ -116,10 +127,10 @@ h1{
 /* ===== DESCARGA ===== */
 .descargar{
     position:absolute;
-    top:8px;
-    left:8px;
+    top:10px;
+    left:10px;
     background:rgba(0,0,0,0.6);
-    padding:7px;
+    padding:8px;
     border-radius:50%;
     color:white;
     z-index:10;
@@ -159,7 +170,6 @@ footer h2{
     <p>¡ESCUCHAME!</p>
 </div>
 
-<!-- TITULOS -->
 <h1>Nuestra Boda</h1>
 <div class="fecha">18/01/2025</div>
 
@@ -170,46 +180,39 @@ footer h2{
 
 <div class="frase">dos vidas, un solo amor</div>
 
-<!-- GALERIA -->
 <div class="galeria">
 
-<!-- SVG FLORAL REUTILIZABLE -->
+<!-- FLOR SVG -->
 <template id="flor">
 <svg viewBox="0 0 100 100">
-    <path d="M10 90 C30 30 70 30 90 10" fill="#6b8e23"/>
-    <path d="M20 80 C40 50 60 50 80 20" fill="none" stroke="#ffffff" stroke-width="2"/>
-    <circle cx="22" cy="22" r="6" fill="#ffffff"/>
+    <path d="M5 95 C30 30 70 30 95 5" fill="#6b8e23"/>
+    <path d="M20 80 C40 55 60 55 80 20" fill="none" stroke="#ffffff" stroke-width="3"/>
+    <circle cx="25" cy="25" r="7" fill="#ffffff"/>
 </svg>
 </template>
 
 <!-- FOTO PRINCIPAL -->
 <div class="foto foto-principal">
     <a class="descargar" href="Kuti_PRO_1.jpg" download><i class="fa fa-download"></i></a>
-
     <div class="esquina tl"></div>
     <div class="esquina tr"></div>
     <div class="esquina bl"></div>
     <div class="esquina br"></div>
-
     <img src="Kuti_PRO_1.jpg">
 </div>
 
-<!-- FOTOS 2 A 65 -->
 <script>
 const flor = document.getElementById('flor').innerHTML;
-
 document.querySelectorAll('.esquina').forEach(e => e.innerHTML = flor);
 
 for(let i=2;i<=65;i++){
 document.write(`
 <div class="foto">
 <a class="descargar" href="Kuti_PRO_${i}.jpg" download><i class="fa fa-download"></i></a>
-
 <div class="esquina tl">${flor}</div>
 <div class="esquina tr">${flor}</div>
 <div class="esquina bl">${flor}</div>
 <div class="esquina br">${flor}</div>
-
 <img src="Kuti_PRO_${i}.jpg">
 </div>
 `);
@@ -218,21 +221,18 @@ document.write(`
 
 </div>
 
-<!-- FOOTER -->
 <footer>
 
 <div class="descargar-todo">
-    <a href="Kuti_FOTOS.zip" download style="color:white;">
-        Descargar todas las fotos
-    </a>
+<a href="Kuti_FOTOS.zip" download style="color:white;">Descargar todas las fotos</a>
 </div>
 
 <h2>KUTI PRODUCCIONES</h2>
 
 <div class="redes">
-    <a href="https://www.instagram.com/kuti.producciones" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.facebook.com/KUTI.producciones" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.tiktok.com/@kutiproducciones" target="_blank"><i class="fab fa-tiktok"></i></a>
+<a href="https://www.instagram.com/kuti.producciones" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://www.facebook.com/KUTI.producciones" target="_blank"><i class="fab fa-facebook"></i></a>
+<a href="https://www.tiktok.com/@kutiproducciones" target="_blank"><i class="fab fa-tiktok"></i></a>
 </div>
 
 </footer>
