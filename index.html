@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestra Boda</title>
+
+<!-- Fuentes elegantes -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<!-- Iconos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+/* ===== FONDOS SEGÚN DISPOSITIVO ===== */
+body{
+    margin:0;
+    font-family:'Playfair Display', serif;
+    color:white;
+    background:url('fondo_boda2.jpg') no-repeat center center fixed;
+    background-size:cover;
+    text-align:center;
+}
+
+@media(max-width:900px){
+    body{
+        background:url('fondo_boda1.jpg') no-repeat center center fixed;
+        background-size:cover;
+    }
+}
+
+.overlay{
+    background:rgba(0,0,0,0.55);
+    min-height:100vh;
+    padding:40px 20px;
+}
+
+/* ===== TÍTULOS ===== */
+.titulo{
+    font-size:2.6rem;
+    letter-spacing:3px;
+}
+
+.fecha{
+    margin-top:10px;
+    font-size:1.2rem;
+}
+
+.frase{
+    margin:30px 0;
+    font-size:1.8rem;
+    letter-spacing:2px;
+}
+
+/* ===== NOMBRES ===== */
+.nombres{
+    display:flex;
+    justify-content:center;
+    gap:80px;
+    margin:40px 0;
+}
+
+.persona .nombre{
+    font-family:'Great Vibes', cursive;
+    font-size:3.2rem;
+}
+
+.persona .apellido{
+    font-size:1.3rem;
+    letter-spacing:2px;
+}
+
+@media(max-width:700px){
+    .nombres{
+        flex-direction:column;
+        gap:25px;
+    }
+}
+
+/* ===== FOTO PRINCIPAL ===== */
+.foto-principal{
+    max-width:900px;
+    margin:40px auto;
+    position:relative;
+    padding:14px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#f5d27a,#b8860b,#f5d27a);
+    box-shadow:0 20px 45px rgba(0,0,0,0.8);
+}
+
+.foto-principal img{
+    width:100%;
+    border-radius:18px;
+}
+
+/* ===== GALERÍA ===== */
+.galeria{
+    margin-top:60px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+    max-width:1300px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.foto{
+    position:relative;
+    padding:10px;
+    border-radius:22px;
+    background:linear-gradient(135deg,#f5d27a,#b8860b,#f5d27a);
+    box-shadow:0 15px 35px rgba(0,0,0,0.7);
+}
+
+.foto img{
+    width:100%;
+    border-radius:15px;
+}
+
+/* ===== DESCARGA ===== */
+.descargar{
+    position:absolute;
+    top:14px;
+    left:14px;
+    background:rgba(0,0,0,0.65);
+    padding:8px;
+    border-radius:50%;
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+}
+
+/* ===== MÚSICA ===== */
+.music-container{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    text-align:center;
+    z-index:1000;
+}
+
+.music-btn{
+    background:rgba(0,0,0,0.75);
+    border:none;
+    color:white;
+    font-size:26px;
+    padding:16px 18px;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.music-text{
+    font-family:'Playfair Display', serif;
+    font-size:0.8rem;
+    margin-top:6px;
+}
+
+/* ===== FOOTER ===== */
+footer{
+    margin-top:80px;
+}
+
+footer h2{
+    letter-spacing:3px;
+}
+
+.redes{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    margin-top:15px;
+}
+
+.redes a{
+    color:white;
+    font-size:1.8rem;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== AUDIO ===== -->
+<audio id="musica" autoplay loop>
+    <source src="musica_boda.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-container">
+    <button class="music-btn" onclick="toggleMusic()">
+        <i class="fa-solid fa-play"></i>
+    </button>
+    <div class="music-text">¡ESCUCHAME!</div>
+</div>
+
+<div class="overlay">
+
+<div class="titulo">Nuestra Boda</div>
+<div class="fecha">18 / 01 / 2025</div>
+
+<div class="nombres">
+    <div class="persona">
+        <div class="nombre">Cristian</div>
+        <div class="apellido">Paucar</div>
+    </div>
+    <div class="persona">
+        <div class="nombre">Liseth</div>
+        <div class="apellido">Pilamunga</div>
+    </div>
+</div>
+
+<div class="frase">DOS VIDAS, UN SOLO AMOR</div>
+
+<!-- FOTO PRINCIPAL -->
+<div class="foto-principal">
+    <a class="descargar" href="Kuti_PRO_1.jpg" download>
+        <i class="fa-solid fa-download"></i>
+    </a>
+    <img src="Kuti_PRO_1.jpg">
+</div>
+
+<!-- GALERÍA -->
+<div class="galeria" id="galeria"></div>
+
+<footer>
+<h2>KUTI PRODUCCIONES</h2>
+<div class="redes">
+    <a href="https://www.instagram.com/kuti.producciones?igsh=MTMwNHZvODg0c29rcA==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.facebook.com/KUTI.producciones" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@kutiproducciones?_r=1&_t=ZS-93H8ApU0axd" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+</div>
+</footer>
+
+</div>
+
+<script>
+/* GALERÍA 2 → 65 */
+const galeria=document.getElementById("galeria");
+for(let i=2;i<=65;i++){
+    galeria.innerHTML+=`
+    <div class="foto">
+        <a class="descargar" href="Kuti_PRO_${i}.jpg" download>
+            <i class="fa-solid fa-download"></i>
+        </a>
+        <img src="Kuti_PRO_${i}.jpg">
+    </div>`;
+}
+
+/* MÚSICA */
+const musica=document.getElementById("musica");
+musica.volume=0.5;
+let play=true;
+function toggleMusic(){
+    play?musica.pause():musica.play();
+    play=!play;
+}
+</script>
+
+</body>
+</html>
