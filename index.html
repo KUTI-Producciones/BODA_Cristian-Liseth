@@ -9,44 +9,42 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 
 <style>
-/* ===== ESTILO BASE ===== */
+/* ===== BASE ===== */
 body{
     margin:0;
     font-family:'Playfair Display', serif;
     text-align:center;
     color:white;
     min-height:100vh;
-    position:relative;
     background:url('fondo_boda2.jpg') no-repeat center center fixed;
     background-size:cover;
+    position:relative;
 }
 
-/* ===== DESENFOQUE SOLO COMPUTADORA ===== */
+/* ===== BLUR SOLO PC ===== */
 body::before{
     content:"";
     position:fixed;
     inset:0;
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter:blur(30px);
+    -webkit-backdrop-filter:blur(30px);
     background:rgba(0,0,0,0.25);
     z-index:-1;
 }
 
-/* ===== MOVIL / TABLET (SIN DESENFOQUE) ===== */
-@media (max-width: 768px){
+/* ===== MOVIL ===== */
+@media (max-width:768px){
     body{
         background:url('fondo_boda1.jpg') no-repeat center center fixed;
         background-size:cover;
     }
-    body::before{
-        display:none; /* elimina blur */
-    }
+    body::before{display:none;}
 }
 
 /* ===== TITULOS ===== */
 h1{
     font-family:'Great Vibes', cursive;
-    font-size:60px;
+    font-size:58px;
     margin-top:40px;
 }
 .fecha{font-size:18px;}
@@ -68,11 +66,8 @@ h1{
 }
 
 /* ===== MUSICA ===== */
-.musica{
-    margin:30px 0;
-}
 .musica button{
-    font-size:40px;
+    font-size:38px;
     background:none;
     border:none;
     color:white;
@@ -92,10 +87,15 @@ h1{
     gap:25px;
     padding:20px;
 }
-.foto-principal{
-    grid-column:1/-1;
-    max-width:700px;
-    margin:auto;
+
+/* MOVIL: 2 COLUMNAS */
+@media (max-width:768px){
+    .galeria{
+        grid-template-columns:repeat(2,1fr);
+    }
+    .foto-principal{
+        grid-column:1 / -1;
+    }
 }
 
 /* ===== FOTO ===== */
@@ -104,11 +104,11 @@ h1{
 }
 .foto img{
     width:100%;
-    display:block;
     border-radius:16px;
+    display:block;
 }
 
-/* ===== ESQUINAS FLORALES PROPORCIONALES ===== */
+/* ===== ESQUINAS FLORALES ===== */
 .esquina{
     position:absolute;
     width:18%;
@@ -119,21 +119,18 @@ h1{
 .tr{top:0;right:0;transform:scaleX(-1);}
 .bl{bottom:0;left:0;transform:scaleY(-1);}
 .br{bottom:0;right:0;transform:scale(-1);}
-.esquina svg{
-    width:100%;
-    height:100%;
-}
+.esquina svg{width:100%;height:100%;}
 
 /* ===== DESCARGA ===== */
 .descargar{
     position:absolute;
     top:10px;
     left:10px;
-    background:rgba(0,0,0,0.6);
+    background:rgba(0,0,0,.6);
     padding:8px;
     border-radius:50%;
-    color:white;
     z-index:10;
+    color:white;
 }
 
 /* ===== FOOTER ===== */
@@ -148,62 +145,65 @@ footer h2{
     display:flex;
     justify-content:center;
     gap:25px;
+    margin-bottom:25px;
 }
 .redes a{
     color:white;
     font-size:30px;
 }
-.descargar-todo{
-    margin:35px 0;
+
+/* LIGHTROOM */
+.lightroom img{
+    width:90px;
+    opacity:.9;
 }
 </style>
 </head>
 
 <body>
 
-<!-- MUSICA -->
 <audio id="audio" src="musica_boda.mp3"></audio>
 <div class="musica">
-    <button onclick="document.getElementById('audio').play()">
-        <i class="fa-solid fa-play"></i>
-    </button>
-    <p>¡ESCUCHAME!</p>
+<button onclick="document.getElementById('audio').play()">
+<i class="fa-solid fa-play"></i>
+</button>
+<p>¡ESCUCHAME!</p>
 </div>
 
 <h1>Nuestra Boda</h1>
 <div class="fecha">18/01/2025</div>
 
 <div class="nombres">
-    <div>Cristian<span>Paucar</span></div>
-    <div>Liseth<span>Pilamunga</span></div>
+<div>Cristian<span>Paucar</span></div>
+<div>Liseth<span>Pilamunga</span></div>
 </div>
 
 <div class="frase">dos vidas, un solo amor</div>
 
 <div class="galeria">
 
-<!-- FLOR SVG -->
+<!-- FLOR -->
 <template id="flor">
 <svg viewBox="0 0 100 100">
-    <path d="M5 95 C30 30 70 30 95 5" fill="#6b8e23"/>
-    <path d="M20 80 C40 55 60 55 80 20" fill="none" stroke="#ffffff" stroke-width="3"/>
-    <circle cx="25" cy="25" r="7" fill="#ffffff"/>
+<path d="M5 95 C30 30 70 30 95 5" fill="#6b8e23"/>
+<path d="M20 80 C40 55 60 55 80 20" fill="none" stroke="#ffffff" stroke-width="3"/>
+<circle cx="25" cy="25" r="7" fill="#ffffff"/>
 </svg>
 </template>
 
-<!-- FOTO PRINCIPAL -->
+<!-- FOTO 1 -->
 <div class="foto foto-principal">
-    <a class="descargar" href="Kuti_PRO_1.jpg" download><i class="fa fa-download"></i></a>
-    <div class="esquina tl"></div>
-    <div class="esquina tr"></div>
-    <div class="esquina bl"></div>
-    <div class="esquina br"></div>
-    <img src="Kuti_PRO_1.jpg">
+<a class="descargar" href="Kuti_PRO_1.jpg" download><i class="fa fa-download"></i></a>
+<div class="esquina tl"></div>
+<div class="esquina tr"></div>
+<div class="esquina bl"></div>
+<div class="esquina br"></div>
+<img src="Kuti_PRO_1.jpg">
 </div>
 
 <script>
 const flor = document.getElementById('flor').innerHTML;
-document.querySelectorAll('.esquina').forEach(e => e.innerHTML = flor);
+document.querySelectorAll('.esquina').forEach(e=>e.innerHTML=flor);
 
 for(let i=2;i<=65;i++){
 document.write(`
@@ -223,16 +223,18 @@ document.write(`
 
 <footer>
 
-<div class="descargar-todo">
-<a href="Kuti_FOTOS.zip" download style="color:white;">Descargar todas las fotos</a>
-</div>
-
 <h2>KUTI PRODUCCIONES</h2>
 
 <div class="redes">
 <a href="https://www.instagram.com/kuti.producciones" target="_blank"><i class="fab fa-instagram"></i></a>
 <a href="https://www.facebook.com/KUTI.producciones" target="_blank"><i class="fab fa-facebook"></i></a>
 <a href="https://www.tiktok.com/@kutiproducciones" target="_blank"><i class="fab fa-tiktok"></i></a>
+</div>
+
+<div class="lightroom">
+<a href="https://adobe.ly/466cWfv" target="_blank">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Adobe_Photoshop_Lightroom_CC_logo.svg">
+</a>
 </div>
 
 </footer>
