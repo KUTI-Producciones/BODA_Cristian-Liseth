@@ -13,27 +13,27 @@
 body{
     margin:0;
     font-family:'Playfair Display', serif;
-    text-align:center;
     color:white;
+    text-align:center;
     min-height:100vh;
     background:url('fondo_boda2.jpg') no-repeat center center fixed;
     background-size:cover;
     position:relative;
 }
 
-/* ===== BLUR SOLO PC ===== */
+/* ===== DESENFOQUE SOLO PC (NIVEL 10) ===== */
 body::before{
     content:"";
     position:fixed;
     inset:0;
-    backdrop-filter:blur(30px);
-    -webkit-backdrop-filter:blur(30px);
-    background:rgba(0,0,0,0.25);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    background:rgba(0,0,0,.25);
     z-index:-1;
 }
 
-/* ===== MOVIL ===== */
-@media (max-width:768px){
+/* ===== MOVIL SIN DESENFOQUE ===== */
+@media(max-width:768px){
     body{
         background:url('fondo_boda1.jpg') no-repeat center center fixed;
         background-size:cover;
@@ -52,8 +52,8 @@ h1{
     display:flex;
     justify-content:center;
     gap:80px;
-    font-size:26px;
     margin-top:25px;
+    font-size:26px;
 }
 .nombres span{
     display:block;
@@ -87,20 +87,15 @@ h1{
     gap:25px;
     padding:20px;
 }
-
-/* MOVIL: 2 COLUMNAS */
-@media (max-width:768px){
-    .galeria{
-        grid-template-columns:repeat(2,1fr);
-    }
-    .foto-principal{
-        grid-column:1 / -1;
-    }
+@media(max-width:768px){
+    .galeria{grid-template-columns:repeat(2,1fr);}
+    .foto-principal{grid-column:1/-1;}
 }
 
 /* ===== FOTO ===== */
 .foto{
     position:relative;
+    overflow:hidden;
 }
 .foto img{
     width:100%;
@@ -108,30 +103,28 @@ h1{
     display:block;
 }
 
-/* ===== ESQUINAS FLORALES ===== */
-.esquina{
-    position:absolute;
-    width:18%;
-    height:18%;
-    pointer-events:none;
-}
-.tl{top:0;left:0;}
-.tr{top:0;right:0;transform:scaleX(-1);}
-.bl{bottom:0;left:0;transform:scaleY(-1);}
-.br{bottom:0;right:0;transform:scale(-1);}
-.esquina svg{width:100%;height:100%;}
-
 /* ===== DESCARGA ===== */
 .descargar{
     position:absolute;
-    top:10px;
-    left:10px;
+    top:8px;
+    left:8px;
     background:rgba(0,0,0,.6);
-    padding:8px;
+    padding:7px;
     border-radius:50%;
-    z-index:10;
-    color:white;
+    z-index:5;
 }
+
+/* ===== FLORES EN ESQUINAS (PROPORCIONALES) ===== */
+.flor{
+    position:absolute;
+    width:14%;
+    max-width:70px;
+    opacity:.95;
+}
+.tl{top:2%;left:2%;}
+.tr{top:2%;right:2%;transform:scaleX(-1);}
+.bl{bottom:2%;left:2%;transform:scaleY(-1);}
+.br{bottom:2%;right:2%;transform:scale(-1);}
 
 /* ===== FOOTER ===== */
 footer{
@@ -144,24 +137,22 @@ footer h2{
 .redes{
     display:flex;
     justify-content:center;
-    gap:25px;
-    margin-bottom:25px;
+    gap:22px;
+    align-items:center;
 }
 .redes a{
     color:white;
     font-size:30px;
 }
-
-/* LIGHTROOM */
-.lightroom img{
-    width:90px;
-    opacity:.9;
+.redes img{
+    width:32px;
 }
 </style>
 </head>
 
 <body>
 
+<!-- MUSICA -->
 <audio id="audio" src="musica_boda.mp3"></audio>
 <div class="musica">
 <button onclick="document.getElementById('audio').play()">
@@ -182,38 +173,26 @@ footer h2{
 
 <div class="galeria">
 
-<!-- FLOR -->
-<template id="flor">
-<svg viewBox="0 0 100 100">
-<path d="M5 95 C30 30 70 30 95 5" fill="#6b8e23"/>
-<path d="M20 80 C40 55 60 55 80 20" fill="none" stroke="#ffffff" stroke-width="3"/>
-<circle cx="25" cy="25" r="7" fill="#ffffff"/>
-</svg>
-</template>
-
-<!-- FOTO 1 -->
+<!-- FOTO PRINCIPAL -->
 <div class="foto foto-principal">
 <a class="descargar" href="Kuti_PRO_1.jpg" download><i class="fa fa-download"></i></a>
-<div class="esquina tl"></div>
-<div class="esquina tr"></div>
-<div class="esquina bl"></div>
-<div class="esquina br"></div>
 <img src="Kuti_PRO_1.jpg">
+<img class="flor tl" src="flor_blanca.png">
+<img class="flor tr" src="flor_blanca.png">
+<img class="flor bl" src="flor_blanca.png">
+<img class="flor br" src="flor_blanca.png">
 </div>
 
 <script>
-const flor = document.getElementById('flor').innerHTML;
-document.querySelectorAll('.esquina').forEach(e=>e.innerHTML=flor);
-
 for(let i=2;i<=65;i++){
 document.write(`
 <div class="foto">
 <a class="descargar" href="Kuti_PRO_${i}.jpg" download><i class="fa fa-download"></i></a>
-<div class="esquina tl">${flor}</div>
-<div class="esquina tr">${flor}</div>
-<div class="esquina bl">${flor}</div>
-<div class="esquina br">${flor}</div>
 <img src="Kuti_PRO_${i}.jpg">
+<img class="flor tl" src="flor_blanca.png">
+<img class="flor tr" src="flor_blanca.png">
+<img class="flor bl" src="flor_blanca.png">
+<img class="flor br" src="flor_blanca.png">
 </div>
 `);
 }
@@ -229,9 +208,8 @@ document.write(`
 <a href="https://www.instagram.com/kuti.producciones" target="_blank"><i class="fab fa-instagram"></i></a>
 <a href="https://www.facebook.com/KUTI.producciones" target="_blank"><i class="fab fa-facebook"></i></a>
 <a href="https://www.tiktok.com/@kutiproducciones" target="_blank"><i class="fab fa-tiktok"></i></a>
-</div>
 
-<div class="lightroom">
+<!-- LIGHTROOM AL LADO DE TIKTOK -->
 <a href="https://adobe.ly/466cWfv" target="_blank">
 <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Adobe_Photoshop_Lightroom_CC_logo.svg">
 </a>
