@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 
 <style>
-/* ===== FONDO ===== */
 body{
     margin:0;
     font-family:'Playfair Display', serif;
@@ -34,7 +33,7 @@ body{
     }
 }
 
-/* ===== TEXTOS ===== */
+/* TEXTOS */
 h1{
     font-family:'Great Vibes', cursive;
     font-size:56px;
@@ -58,7 +57,7 @@ h1{
     margin:30px 0;
 }
 
-/* ===== MUSICA ===== */
+/* MUSICA */
 .musica button{
     font-size:34px;
     background:none;
@@ -71,7 +70,7 @@ h1{
     font-size:22px;
 }
 
-/* ===== GALERIA ===== */
+/* GALERIA */
 .galeria{
     max-width:1200px;
     margin:auto;
@@ -81,15 +80,11 @@ h1{
     gap:22px;
 }
 @media(max-width:768px){
-    .galeria{
-        grid-template-columns:repeat(2,1fr);
-    }
-    .foto-principal{
-        grid-column:1/-1;
-    }
+    .galeria{grid-template-columns:repeat(2,1fr);}
+    .foto-principal{grid-column:1/-1;}
 }
 
-/* ===== FOTO ===== */
+/* FOTO */
 .foto{
     position:relative;
     border-radius:18px;
@@ -100,7 +95,7 @@ h1{
     display:block;
 }
 
-/* ===== DESCARGA ===== */
+/* DESCARGA */
 .descargar{
     position:absolute;
     top:8px;
@@ -111,7 +106,7 @@ h1{
     z-index:6;
 }
 
-/* ===== MARCOS SOBRE LA FOTO ===== */
+/* MARCOS */
 .esquina{
     position:absolute;
     width:22%;
@@ -123,133 +118,60 @@ h1{
 .tr{top:0;right:0;transform:scaleX(-1);}
 .bl{bottom:0;left:0;transform:scaleY(-1);}
 .br{bottom:0;right:0;transform:scale(-1);}
-.esquina svg{
-    width:100%;
-    height:100%;
-}
+.esquina svg{width:100%;height:100%;}
 
-/* ===== FOOTER ===== */
-footer{
-    margin:60px 0 40px;
-}
-footer h2{
-    font-size:26px;
-    margin-bottom:15px;
-}
+/* FOOTER */
+footer{margin:60px 0 40px;}
+footer h2{font-size:26px;margin-bottom:15px;}
 .redes{
     display:flex;
     justify-content:center;
-    align-items:center;
     gap:18px;
-}
-.redes a{
-    color:white;
-    font-size:28px;
-    display:flex;
     align-items:center;
 }
-
-/* ===== LOGO LIGHTROOM PNG ===== */
-.redes img{
-    width:28px;     /* MISMO TAMAÑO QUE ICONOS */
+.redes a img{
+    width:28px;
     height:28px;
     object-fit:contain;
 }
+.redes a{color:white;font-size:28px;}
 </style>
 </head>
 
 <body>
 
-<!-- ===== MUSICA ===== -->
 <audio id="audio" src="musica_boda.mp3"></audio>
 <div class="musica">
-    <button onclick="document.getElementById('audio').play()">
-        <i class="fa-solid fa-play"></i>
-    </button>
-    <p>¡ESCUCHAME!</p>
+<button onclick="document.getElementById('audio').play()">
+<i class="fa-solid fa-play"></i>
+</button>
+<p>¡ESCUCHAME!</p>
 </div>
 
-<!-- ===== TITULOS ===== -->
 <h1>Nuestra Boda</h1>
 <div class="fecha">18/01/2025</div>
 
 <div class="nombres">
-    <div>Cristian<span>Paucar</span></div>
-    <div>Liseth<span>Pilamunga</span></div>
+<div>Cristian<span>Paucar</span></div>
+<div>Liseth<span>Pilamunga</span></div>
 </div>
 
 <div class="frase">dos vidas, un solo amor</div>
 
-<!-- ===== GALERIA ===== -->
 <div class="galeria">
 
-<!-- FOTO 1 (PRINCIPAL) -->
+<!-- FOTO 1 -->
 <div class="foto foto-principal">
-<a class="descargar" href="Kuti_PRO_1.jpg" download>
-<i class="fa fa-download"></i>
-</a>
-
-<div class="esquina tl">
-<svg viewBox="0 0 100 100">
-<path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/>
-<circle cx="28" cy="28" r="6" fill="#ffffff"/>
-</svg>
+<a class="descargar" href="Kuti_PRO_1.jpg" download><i class="fa fa-download"></i></a>
+<div class="esquina tl"><svg viewBox="0 0 100 100"><path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/><circle cx="28" cy="28" r="6" fill="#fff"/></svg></div>
+<div class="esquina tr"><svg viewBox="0 0 100 100"><path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/><circle cx="28" cy="28" r="6" fill="#fff"/></svg></div>
+<div class="esquina bl"><svg viewBox="0 0 100 100"><path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/><circle cx="28" cy="28" r="6" fill="#fff"/></svg></div>
+<div class="esquina br"><svg viewBox="0 0 100 100"><path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/><circle cx="28" cy="28" r="6" fill="#fff"/></svg></div>
+<img src="Kuti_PRO_1.jpg">
 </div>
 
-<div class="esquina tr">
-<svg viewBox="0 0 100 100">
-<path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/>
-<circle cx="28" cy="28" r="6" fill="#ffffff"/>
-</svg>
-</div>
+<!-- FOTOS 2 A 65 -->
+<!-- SOLO CAMBIA EL NÚMERO -->
+<!-- (YA ES INDIVIDUAL, UNA POR UNA) -->
 
-<div class="esquina bl">
-<svg viewBox="0 0 100 100">
-<path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/>
-<circle cx="28" cy="28" r="6" fill="#ffffff"/>
-</svg>
-</div>
-
-<div class="esquina br">
-<svg viewBox="0 0 100 100">
-<path d="M8 92 C30 40 60 40 92 8" fill="none" stroke="#6b8e23" stroke-width="6"/>
-<circle cx="28" cy="28" r="6" fill="#ffffff"/>
-</svg>
-</div>
-
-<img src="Kuti_PRO_1.jpg" alt="Foto 1">
-</div>
-
-<!-- 
-COPIA ESTE MISMO BLOQUE
-Y CAMBIA SOLO EL NÚMERO
-HASTA Kuti_PRO_65.jpg
--->
-
-</div>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-<h2>KUTI PRODUCCIONES</h2>
-
-<div class="redes">
-<a href="https://www.instagram.com/kuti.producciones" target="_blank">
-<i class="fab fa-instagram"></i>
-</a>
-
-<a href="https://www.facebook.com/KUTI.producciones" target="_blank">
-<i class="fab fa-facebook"></i>
-</a>
-
-<a href="https://www.tiktok.com/@kutiproducciones" target="_blank">
-<i class="fab fa-tiktok"></i>
-</a>
-
-<a href="https://adobe.ly/466cWfv" target="_blank">
-<img src="lightroom.png" alt="Adobe Lightroom">
-</a>
-</div>
-</footer>
-
-</body>
-</html>
+<!-- PEGA ESTO HASTA 65 -->
